@@ -12,13 +12,17 @@ and is published with GitHub Pages.
 | `talks-and-events.html` | Talks and events page |
 | `assets/css/style.css` | All styling; the colours are defined at the top |
 | `assets/js/main.js` | Opens and closes the menu on phones |
-| `assets/images/` | Banner photo (used on every page) and profile photo |
+| `assets/images/` | Banner photos (`banner.jpg` is the default; `homepage.jpg` is used on the home page) and profile photo |
 | `assets/fonts/` | Bitter and Open Sans font files, with their licences |
 | `.nojekyll` | Tells GitHub Pages to publish the files exactly as they are |
 
 ## Editing
 
 - **Text:** open the `.html` file in any text editor and change the text between the tags.
+- **Banner photo of a page:** put the image in `assets/images/`, then in that page's `.html` file
+  write its name on the banner line:
+  `<section class="banner" style="background-image: url('assets/images/my-photo.jpg')">`.
+  Without `style="..."` the page uses the default photo, `banner.jpg`.
 - **New event:** in `talks-and-events.html`, copy one `<li>…</li>` line and edit it.
   `class="os"` gives the font Open Sans; leave it out to use Bitter.
 - **New page:** copy `talks-and-events.html` to a new name, change its title and content,

@@ -160,7 +160,7 @@ a { color: var(--accent); }
   align-items: center;
   height: 340px;
   padding: 112px 0 56px;          /* the top 56px sit under the fixed top bar */
-  background-image: url("../images/banner.jpg");   /* same photo on every page */
+  background-image: url("../images/banner.jpg");   /* default photo */
   background-position: left top;
   background-repeat: no-repeat;
   background-size: cover;
@@ -168,9 +168,9 @@ a { color: var(--accent); }
   text-align: center;
 }
 
-/* For a different photo on one page, add a class to that page's banner
-   (e.g. <section class="banner banner-other">) and define it here:
-   .banner-other { background-image: url("../images/other.jpg"); } */
+/* For a different photo on one page, put the image in assets/images/ and set it
+   on that page's banner, directly in the HTML (nothing to change here):
+   <section class="banner" style="background-image: url('assets/images/other.jpg')"> */
 
 .banner .container { width: 100%; }
 
