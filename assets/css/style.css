@@ -1,0 +1,406 @@
+/* ==========================================================================
+   Ricardo Motta - stylesheet
+   Recreates the look of the original Google Site (theme "Impression").
+
+   Colours used throughout (change them here):
+     --accent  purple for headings, links and the divider line
+     --text    body text
+     --dark    site title, menu text and the highlighted menu item
+
+   Page building blocks (see index.html):
+     .topbar      fixed white bar with the site title and the menu
+     .banner      large photo with the page title
+     .section     a horizontal band of content
+     .container   centres the content (max 1280px wide)
+     .row / .col  columns; .col-12 = full width, .col-10, .col-6, .col-4
+     .box         text block with a little inner padding
+   ========================================================================== */
+
+/* Fonts: local copies of Bitter and Open Sans (SIL Open Font License, see assets/fonts) */
+@font-face {
+  font-family: 'Bitter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/bitter-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Bitter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/bitter-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Bitter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/bitter-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Bitter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/bitter-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/open-sans-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/open-sans-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --accent: #674ea7;
+  --text: #212121;
+  --dark: #1f1f1f;
+  --bar-height: 56px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: var(--bar-height);
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--text);
+  font-family: Bitter, Georgia, serif;
+  font-size: 16px;
+}
+
+a { color: var(--accent); }
+
+/* ---------- Top bar ---------- */
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  height: var(--bar-height);
+  padding: 0 48px 0 16px;
+  background: #fff;
+  white-space: nowrap;
+}
+
+.site-title {
+  display: inline-block;
+  max-width: 380px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 16px 12px;
+  color: var(--dark);
+  font-size: 21.3333px;           /* 16pt */
+  line-height: 1;
+  text-decoration: none;
+}
+
+.menu { margin-left: auto; }
+
+.menu ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu li {
+  margin-right: 2px;
+  padding: 10px 6px;
+}
+
+.menu li:hover { opacity: 0.7; }
+
+.menu a {
+  display: inline-block;
+  padding: 0 10px;
+  color: var(--dark);
+  font-size: 16px;                /* 12pt */
+  line-height: 1.88;
+  text-decoration: none;
+}
+
+.menu a[aria-current="page"] {
+  background: var(--dark);
+  color: #fff;
+}
+
+.menu-button,
+.backdrop { display: none; }
+
+/* ---------- Banner (page title over a photo) ---------- */
+
+.banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 340px;
+  padding: 112px 0 56px;          /* the top 56px sit under the fixed top bar */
+  background-image: url("../images/banner.jpg");   /* same photo on every page */
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+}
+
+/* For a different photo on one page, add a class to that page's banner
+   (e.g. <section class="banner banner-other">) and define it here:
+   .banner-other { background-image: url("../images/other.jpg"); } */
+
+.banner .container { width: 100%; }
+
+.banner-title {
+  margin: 0;
+  font-size: 40px;                /* 30pt */
+  font-weight: 400;
+  line-height: 64px;
+}
+
+.banner .banner-subtitle {
+  margin: 0;
+  font-size: 18.6667px;           /* 14pt */
+  line-height: 1.164;
+}
+
+/* ---------- Sections, columns and text blocks ---------- */
+
+.section { padding: 24px 0; }
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.col { padding: 0 1.25%; }
+.col-12 { flex: 0 0 100%; max-width: 100%; }
+.col-10 { flex: 0 0 83.3333%; max-width: 83.3333%; }
+.col-6 { flex: 0 0 50%; max-width: 50%; }
+.col-4 { flex: 0 0 33.3333%; max-width: 33.3333%; }
+
+.box {
+  padding: 8px;
+  line-height: 1.15;              /* sets the height of an empty line (<br>) */
+}
+
+.box p {
+  margin: 15px 0 0;
+  line-height: 26px;
+}
+
+.box > :first-child { margin-top: 0; }
+
+.center { text-align: center; }
+.justify { text-align: justify; }
+
+/* "Heading" text style */
+h2 {
+  margin: 0;
+  color: var(--accent);
+  font-size: 32px;                /* 24pt */
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* "Subheading" text style */
+h3 {
+  margin: 0;
+  color: var(--accent);
+  font-size: 22.6667px;           /* 17pt */
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.divider-section { padding: 0; }
+
+.divider {
+  height: 3px;
+  margin: 8px 0 7px;
+  border: 0;
+  background: var(--accent);
+  opacity: 0.8;
+}
+
+/* Contact block on the home page */
+.contact h3 { line-height: 2.4; }
+
+.box.contact p {
+  margin: 0;
+  color: #000;
+  line-height: 41.6px;
+}
+
+.box.contact p.phone { line-height: 31.2px; }
+
+/* Event list on the talks page */
+.events {
+  margin: 6.6667px 0 0;
+  padding: 0;
+  list-style: square;
+}
+
+.events li {
+  margin: 6.6667px 0 0 20px;
+  padding-top: 2px;
+  line-height: 23.92px;
+}
+
+.events li:first-child { margin-top: 0; }
+
+/* Text that used the font "Open Sans" in the original */
+.os { font-family: "Open Sans", Arial, sans-serif; }
+
+/* ---------- Phones and small tablets ---------- */
+
+@media (max-width: 767px) {
+  .topbar { padding: 0 0 0 36px; }
+
+  .site-title { font-size: 20px; }  /* 15pt */
+
+  .menu-button {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 48px;
+    height: var(--bar-height);
+    padding: 16px 12px;
+    border: 0;
+    background: #fff;
+    color: var(--dark);
+    cursor: pointer;
+  }
+
+  .menu-button svg {
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+
+  /* The menu becomes a drawer that slides in from the left */
+  .menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    z-index: 2;
+    width: 250px;
+    max-width: 80%;
+    height: 100%;
+    overflow-y: auto;
+    padding-top: var(--bar-height);
+    background: #fff;
+    white-space: normal;
+    visibility: hidden;
+    transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.125s, visibility 0s 0.625s;
+  }
+
+  .menu-open .menu {
+    left: 0;
+    visibility: visible;
+    transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .menu ul { display: block; }
+
+  .menu li {
+    margin: 20px 0 0;
+    padding: 0 6px 0 36px;
+  }
+
+  .menu a {
+    max-width: 90%;
+    margin: 0 12px 0 4px;
+    padding: 0 6px;
+    line-height: normal;
+  }
+
+  .menu a[aria-current="page"] { font-weight: 600; }
+
+  .backdrop {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 0;
+    height: 100%;
+    background: #000;
+    opacity: 0;
+    transition: opacity 0.5s, width 0s 0.5s;
+  }
+
+  .menu-open .backdrop {
+    width: 100%;
+    opacity: 0.5;
+    transition: opacity 0.5s;
+  }
+
+  .banner-title {
+    font-size: 36px;
+    line-height: 57.6px;
+  }
+
+  .section,
+  .divider-section { padding: 0; }
+
+  .container {
+    max-width: 544px;
+    padding: 0 5px;
+  }
+
+  .col { padding: 24px 2.5%; }
+  .col-12, .col-10, .col-6 { flex-basis: 100%; max-width: 100%; }
+  .col-4 { flex-basis: 66.6667%; max-width: 66.6667%; }
+
+  h2 {
+    font-size: 29.3333px;         /* 22pt */
+  }
+
+  .divider { margin-bottom: 0; }
+}
+
+@media (max-width: 479px) {
+  .site-title { max-width: calc(100vw - 56px); }
+
+  .col { padding: 24px 3.75%; }
+  .col-4 { flex-basis: 100%; max-width: 100%; }
+}
