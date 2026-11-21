@@ -362,6 +362,60 @@
       font-size: clamp(2.75rem, 7.2vw, 6.5rem);
     }
 
+    .references {
+      align-self: start;
+    }
+
+    .reference-list {
+      list-style: none;
+      counter-reset: reference;
+      max-width: 72em;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: .5em;
+      color: var(--paper);
+      font-size: clamp(.84rem, 1.22vw, 1.1rem);
+      line-height: 1.38;
+    }
+
+    .reference-list li {
+      counter-increment: reference;
+      position: relative;
+      padding-left: 3.1em;
+    }
+
+    .reference-list li::before {
+      content: "[" counter(reference) "]";
+      position: absolute;
+      left: 0;
+      width: 2.5em;
+      text-align: right;
+      color: var(--quiet);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .reference-list i {
+      color: #fff;
+    }
+
+    .reference-list sup {
+      line-height: 0;
+    }
+
+    .reference-list a {
+      color: var(--blue);
+      white-space: nowrap;
+    }
+
+    .reference-list .sc {
+      font-variant-caps: small-caps;
+    }
+
+    .reference-list .nb {
+      white-space: nowrap;
+    }
+
     .board {
       margin: 0;
       height: clamp(220px, 51vh, 520px);
@@ -1007,6 +1061,40 @@
         <div id="story-caption"></div>
       </section>
 
+      <section class="slide references" id="references" data-steps="1" data-title="References"
+        aria-labelledby="references-title" hidden>
+        <div class="slide-head">
+          <h2 id="references-title">References</h2>
+        </div>
+        <!-- One <li> per reference, in alphabetical order of the first author's surname.
+             The list is numbered [1], [2], ... automatically. -->
+        <ol class="reference-list">
+          <li>A. Adve, <i>Density criteria for Fourier uniqueness phenomena in ℝ<sup>d</sup></i>, 2023.
+            <a href="https://arxiv.org/abs/2306.07475" target="_blank" rel="noopener">arXiv:2306.07475 ↗</a></li>
+          <li>A. Baranov, A. Borichev, and V. Havin, <i>Majorants of Meromorphic Functions with Fixed Poles</i>,
+            Indiana University Mathematics Journal <b>56</b> (2007), no.&nbsp;4, <span class="nb">1595–1628</span>.
+            <a class="sc" href="https://www.jstor.org/stable/24902743" target="_blank" rel="noopener">url ↗</a></li>
+          <li>A. Beurling and P. Malliavin, <i>On the closure of characters and the zeros of entire functions</i>,
+            Acta Mathematica <b>118</b> (1967), <span class="nb">79–93</span>.
+            <a class="sc" href="https://doi.org/10.1007/BF02392477" target="_blank" rel="noopener">doi ↗</a></li>
+          <li>T. Ghosh, M. Salo, and G. Uhlmann, <i>The Calderón problem for the fractional Schrödinger equation</i>,
+            Analysis &amp; PDE <b>13</b> (2020), no.&nbsp;2, <span class="nb">455–475</span>.
+            <a class="sc" href="https://doi.org/10.2140/apde.2020.13.455" target="_blank" rel="noopener">doi ↗</a></li>
+          <li>A. Kulikov, F. Nazarov, and M. Sodin, <i>Fourier uniqueness and non–uniqueness pairs</i>,
+            Journal of Mathematical Physics, Analysis, Geometry <b>21</b> (2025), no.&nbsp;1, <span class="nb">84–130</span>.
+            <a class="sc" href="https://doi.org/10.15407/mag21.01.04" target="_blank" rel="noopener">doi ↗</a></li>
+          <li>J. Marzo, S. Nitzan and J.-F. Olsen, <i>Sampling and interpolation in de&nbsp;Branges spaces with doubling
+            phase</i>, Journal d’Analyse Mathématique <b>117</b> (2012), no.&nbsp;1, <span class="nb">365–395</span>.
+            <a class="sc" href="https://doi.org/10.1007/s11854-012-0026-2" target="_blank" rel="noopener">doi ↗</a></li>
+          <li>D. Radchenko and M. Viazovska, <i>Fourier interpolation on the real line</i>, Publications Mathématiques
+            de l’IHÉS <b>129</b> (2019), no.&nbsp;1, <span class="nb">51–81</span>.
+            <a class="sc" href="https://doi.org/10.1007/s10240-018-0101-z" target="_blank" rel="noopener">doi ↗</a></li>
+          <li>J. P. Ramos and M. Sousa, <i>Fourier uniqueness pairs of powers of integers</i>, Journal of the European
+            Mathematical Society (JEMS) <b>24</b> (2022), no.&nbsp;12, <span class="nb">4327–4351</span>.
+            <a class="sc" href="https://doi.org/10.4171/JEMS/1194" target="_blank" rel="noopener">doi ↗</a></li>
+        </ol>
+      </section>
+
       <section class="slide closing" id="closing" data-steps="1" data-title="Thank you very much!"
         aria-labelledby="closing-title" hidden>
         <h2 id="closing-title">Thank you very much!</h2>
@@ -1015,7 +1103,7 @@
 
     <footer class="bottom">
       <div class="progress-wrap">
-        <span class="count" id="slide-number">01 / 28</span>
+        <span class="count" id="slide-number">01 / 29</span>
         <div class="steps" id="steps" aria-label="Reveals on this slide"></div>
       </div>
       <div class="transport">
@@ -2753,7 +2841,7 @@
     const transparent = (color, opacity) =>
       color + Math.round(clamp(opacity, 0, 1) * 255).toString(16).padStart(2, "0");
     const introSlides = [...document.querySelectorAll("[data-intro]")];
-    const slides = [...introSlides, ...document.querySelectorAll(".chapter"), byId("closing")];
+    const slides = [...introSlides, ...document.querySelectorAll(".chapter"), byId("references"), byId("closing")];
     const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
     const canvasTex = new Map();
     for (const [key, { uri, width, height }] of Object.entries(JSON.parse(byId("canvas-tex").textContent))) {
